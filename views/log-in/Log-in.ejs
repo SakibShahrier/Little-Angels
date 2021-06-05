@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Log-in frame</title>
+    <link rel="stylesheet" type="text/css" href="/css/log-in.css">
+<body>
+    <h1>Little Angels</h1>
+    <div class="login">
+    <img src="/images/avatar.png" class="avatar">
+       <form action="/loginReq" method="GET">
+            <br><p>Username</p>
+            <input type="text" name="email" placeholder="Enter Username">
+            <p>Password</p>
+            <input type="password" name="password" placeholder="Enter Password">
+            <input type="submit" name="" value="Login"><br>
+            <a href="#">Forgot password?</a><br>
+            <a href="/register">Don't have any account?</a>
+        </form>
+    </div>
+
+    <script>
+
+        function test(){
+            if(this.status == 200){
+                window.location.replace('/');
+            }
+            
+        }
+        function dataFetcher(){
+            var data = {
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,        
+            }
+            const http = new XMLHttpRequest()
+            http.onload = test
+            http.open('POST', '/loginReq')
+            http.setRequestHeader('Content-type', 'application/json')
+            http.send(JSON.stringify(data))
+            console.log(data);
+        }
+    </script>
+</body>
+</head>
+</html>

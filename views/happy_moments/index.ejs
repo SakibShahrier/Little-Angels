@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Happy Moments - Little Angels</title>
+	<link rel="stylesheet" type="text/css" href="/css/happy_moments_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+</head>
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="/"><img src="/images/logo.png" width="170px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><input type="search" id="search" placeholder="Search"></li>    
+                    <li class="underline"><a href="../adoption/">Adoption</a>
+                        <div class="sub-menu-2">
+                            <ul>
+                                <li><a href="../adoption/create-post">New Post</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="underline"><a href="/vets">Vets</a></li>
+                    <li class="underline"><a href="/food_grocery">Food & Grocery</a></li>
+                    <li class="underline"><a href="/happy_moments">Happy Moments</a></li>
+                    <li class="underline"><a href="/emergency">Emergency Links</a></li>
+                    <li class="underline"><a href="#">Account</a>
+                        <div class="sub-menu">
+                            <ul>
+                                <li id="login"><a href="/login">Login</a></li>
+                                <li id="register"><a href="/register">Register</a></li>
+                                <li id="profile"><a href="/profile">Profile</a></li>
+                                <li id="logout"><a href="/logout">Logout</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <img src="/images/menu.png" class="menu-icon" onclick="menuToggle()">
+        </div>
+    </div>
+    </div>
+    
+    <div class="container-2">
+        <h2 class="container title">Latest Posts</h2>
+        <% for(var moment of moments){ %>
+        <div class="gallery">
+            <img src="<%= moment.File %>">
+            <div class="desc"> <%= moment.Description %> </div>
+        </div>
+        <% } %>
+        <div class="page-btn">
+            <span>&#8592;</span>
+            <span>&#8594;</span>
+        </div>
+    </div>
+
+<!--footer-->
+    
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+        
+        function menuToggle(){
+            if(MenuItems.style.maxHeight == "0px"){
+                MenuItems.style.maxHeight = "200px";
+            }
+            else{
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+
+        if(document.cookie.indexOf("email") < 0){
+            document.getElementById("logout").style.display = "none";
+            document.getElementById("profile").style.display = "none";
+        }else{
+            document.getElementById("login").style.display = "none";
+            document.getElementById("register").style.display = "none";
+        }
+    </script>   
+</body>
+</html>
